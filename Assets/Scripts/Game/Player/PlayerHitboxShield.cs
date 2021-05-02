@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class HitboxShield : MonoBehaviour
+public class PlayerHitboxShield : MonoBehaviour
 {
     // Inspector
     [Header("References")]
@@ -120,9 +120,9 @@ public class HitboxShield : MonoBehaviour
         if (durationOnUfoSpawn > 0) Activate(durationOnUfoSpawn);
     }
 
-    void OnBoostCollected(Booster.BoostType boostType)
+    void OnBoostCollected(Booster.Type boostType)
     {
-        if (boostType != Booster.BoostType.Shield) return;
+        if (boostType != Booster.Type.Shield) return;
         Activate(durationOnBoostPickup);
     }
     #endregion

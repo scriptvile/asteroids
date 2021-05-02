@@ -11,7 +11,7 @@ public class PlayerHitbox : MonoBehaviour
 
     // Inspector
     [Header("References")]
-    [SerializeField] HitboxShield shield;
+    [SerializeField] PlayerHitboxShield shield;
 
     //  Privates
     Collider2D hitboxCollider;

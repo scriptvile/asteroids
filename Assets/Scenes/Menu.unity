@@ -180,8 +180,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: This project was made specifically for an interview and is not yet a finished
-    game!
+  m_text: This project was created specifically for the interview and is not yet
+    a finished game!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 77b3af221b3783140bea1c6a02d0ad84, type: 2}
   m_sharedMaterial: {fileID: -6147471195069696370, guid: 77b3af221b3783140bea1c6a02d0ad84, type: 2}

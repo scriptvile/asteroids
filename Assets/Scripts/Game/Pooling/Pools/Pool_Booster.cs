@@ -127,13 +127,13 @@ public class Pool_Booster : Pool<Booster>
 
     #region Event reaction
 
-    void OnBoosterCollected(Booster.BoostType type)
+    void OnBoosterCollected(Booster.Type type)
     {
         switch (type)
         {
-            case Booster.BoostType.ScoreMultiplier: ActivateScoreBoost(); break;
-            case Booster.BoostType.IncreaseFirerate: ActivateFirerateBoost(); break;
-            case Booster.BoostType.Shield: // Leave empty. Shield only needs to be activated.
+            case Booster.Type.ScoreMultiplier: ActivateScoreBoost(); break;
+            case Booster.Type.IncreaseFirerate: ActivateFirerateBoost(); break;
+            case Booster.Type.Shield: // Leave empty. Shield only needs to be activated.
                 break;
             default: Debug.LogError("Unexpected BoostType."); break;
         }

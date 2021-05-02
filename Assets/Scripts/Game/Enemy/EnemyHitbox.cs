@@ -28,7 +28,7 @@ public class EnemyHitbox : MonoBehaviour
             {
                 if (!projectile.BelongsToEnemy)
                 {
-                    if (!projectile.HasCollided)            // This is to prevent destroying two objects at once with a single projectile.
+                    if (!projectile.HasCollided)            // This is to prevent destroying multiple enemies at once with a single projectile.
                     {
                         enemy.Kill();
                         projectile.MarkAsCollided();

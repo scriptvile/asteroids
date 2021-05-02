@@ -4,19 +4,16 @@ using System;
 public class Booster : MonoBehaviour, IPoolable
 {
     // Enums
-    public enum BoostType { ScoreMultiplier, Shield, IncreaseFirerate }
+    public enum Type { ScoreMultiplier, Shield, IncreaseFirerate }
 
     // Events
-    public static event Action<BoostType> OnCollected;
+    public static event Action<Type> OnCollected;
 
     // Inspector
     [SerializeField] SpriteRenderer sr;
 
     // Privates
-    BoostType type;
-
-    // Properties
-    public BoostType Type { get { return type; } }
+    Type type;
 
 
     #region Methods
@@ -31,18 +28,18 @@ public class Booster : MonoBehaviour, IPoolable
         Pool_Booster.i.ReturnToPool(this);
     }
 
-    void Set(BoostType newType)
+    void Set(Type newType)
     {
         type = newType;
         switch (type)
         {
-            case BoostType.ScoreMultiplier:
+            case Type.ScoreMultiplier:
                 sr.sprite = Pool_Booster.i.spr_scoreMultiplier;
                 break;
-            case BoostType.Shield:
+            case Type.Shield:
                 sr.sprite = Pool_Booster.i.spr_shield;
                 break;
-            case BoostType.IncreaseFirerate:
+            case Type.IncreaseFirerate:
                 sr.sprite = Pool_Booster.i.spr_firerate;
                 break;
             default:  Debug.LogError("Unexpected BoostType."); break;
@@ -54,9 +51,9 @@ public class Booster : MonoBehaviour, IPoolable
         int r = UnityEngine.Random.Range(0, 3);
         switch (r)
         {
-            case 0: Set(Booster.BoostType.IncreaseFirerate); break;
-            case 1: Set(Booster.BoostType.ScoreMultiplier); break;
-            case 2: Set(Booster.BoostType.Shield); break;
+            case 0: Set(Booster.Type.IncreaseFirerate); break;
+            case 1: Set(Booster.Type.ScoreMultiplier); break;
+            case 2: Set(Booster.Type.Shield); break;
             default: Debug.LogError("Unexpected Booster Type."); break;
         }
     }
