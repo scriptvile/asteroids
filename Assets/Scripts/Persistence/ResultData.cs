@@ -14,7 +14,7 @@ public class ResultData
     public int WaveRank { get { return waveRank; } }
 
 
-    // Methods
+    // Constructor
     public ResultData(int score, float time, int waveRank)
     {
         this.score = score;
