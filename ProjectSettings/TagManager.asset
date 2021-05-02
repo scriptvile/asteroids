@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Projectile
+  - EnemyHitbox
+  - PlayerHitbox
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - Enemy
+  - Player
+  - Projectile
+  - Booster
+  - GameOverlayUI
+  - SideUI
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 4025435679
+    locked: 0
+  - name: Combat - Back
+    uniqueID: 514687993
+    locked: 0
+  - name: Enemies
+    uniqueID: 1122155627
+    locked: 0
+  - name: Player
+    uniqueID: 2361636509
+    locked: 0
+  - name: Combat - Front
+    uniqueID: 3119168347
+    locked: 0
+  - name: UI
+    uniqueID: 1040091093
+    locked: 0
