@@ -5,6 +5,7 @@ public class AsteroidBig : Asteroid
     // Privates
     Animator animator;
 
+
     override protected void Awake()
     {
         base.Awake();

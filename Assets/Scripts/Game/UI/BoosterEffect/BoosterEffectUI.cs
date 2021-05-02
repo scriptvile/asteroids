@@ -5,6 +5,9 @@ public class BoosterEffectUI : MonoBehaviour
     // Privates
     Animator animator;
 
+
+    #region Methods
+
     void Awake()
     {
         animator = GetComponent<Animator>();
@@ -20,4 +23,5 @@ public class BoosterEffectUI : MonoBehaviour
     {
         animator.SetBool("isHidden", true);
     }
+    #endregion
 }

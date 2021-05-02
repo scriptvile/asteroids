@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+
 public class Pool_Booster : Pool<Booster>
 {
     // Events
@@ -47,6 +48,9 @@ public class Pool_Booster : Pool<Booster>
     }
     public int ScoreBoostMultiplier { get { return scoreBoostMultiplier; } }
 
+
+    #region Methods
+
     void Awake()
     {
         if (i == null) i = this;
@@ -91,7 +95,7 @@ public class Pool_Booster : Pool<Booster>
 
     void SpawnRandomBooster()
     {
-        Request(new Vector2(Bounds.GetRandomFloat(Game.i.PlayArea.BoundsX), Bounds.GetRandomFloat(Game.i.PlayArea.BoundsY)));
+        Request(new Vector2(Bounds.GetRandomPoint(Game.i.PlayArea.BoundsX), Bounds.GetRandomPoint(Game.i.PlayArea.BoundsY)));
     }
 
     void ActivateScoreBoost()
@@ -119,6 +123,9 @@ public class Pool_Booster : Pool<Booster>
         firerateBoostRemainingTime = 0;
         OnFirerateBoostDeactivated?.Invoke();
     }
+    #endregion
+
+    #region Event reaction
 
     void OnBoosterCollected(Booster.BoostType type)
     {
@@ -142,5 +149,5 @@ public class Pool_Booster : Pool<Booster>
             SpawnRandomBooster();
         }
     }
-
+    #endregion
 }

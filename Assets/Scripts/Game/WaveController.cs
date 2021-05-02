@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+
 public class WaveController : MonoBehaviour
 {
     // Enums
@@ -40,6 +41,9 @@ public class WaveController : MonoBehaviour
 
     // Properties
     int BigAsteroidCountThisWave { get { return asteroidCountOnStart + (asteroidsPerWave * (currentWave - 1)); } }
+
+
+    #region Methods
 
     void OnEnable()
     {
@@ -142,6 +146,20 @@ public class WaveController : MonoBehaviour
         }
     }
 
+    IEnumerator KillCheckLate()
+    {
+        yield return new WaitForEndOfFrame();
+
+        if (enemies.Count == 0)
+        {
+            OnAllEnemiesKilled?.Invoke();
+            SetState(State.WaitAfterWave);
+        }
+    }
+    #endregion
+
+    #region Event reaction
+
     void OnEnemySpawned(Enemy enemy)
     {
         enemies.Add(enemy);
@@ -151,18 +169,7 @@ public class WaveController : MonoBehaviour
     {
         enemies.Remove(enemy);
         if (state != State.Progress) return;
-        StartCoroutine(KillCheck());
-    }
-
-    IEnumerator KillCheck()
-    {
-        yield return new WaitForEndOfFrame();
-
-        if (enemies.Count == 0)
-        {
-            OnAllEnemiesKilled?.Invoke();
-            SetState(State.WaitAfterWave);
-        }
+        StartCoroutine(KillCheckLate());
     }
 
     void OnGameStateChanged(Game.State gameState)
@@ -203,4 +210,5 @@ public class WaveController : MonoBehaviour
             }
         }
     }
+    #endregion
 }

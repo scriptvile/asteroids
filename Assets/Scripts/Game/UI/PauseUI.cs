@@ -7,6 +7,9 @@ public class PauseUI : MonoBehaviour
     [SerializeField] GameObject pausedPanel;
     [SerializeField] GameObject unpausedPanel;
 
+
+    #region Methods
+
     void OnEnable()
     {
         Game.OnPaused += SetPaused;
@@ -30,4 +33,5 @@ public class PauseUI : MonoBehaviour
         pausedPanel.SetActive(false);
         unpausedPanel.SetActive(true);
     }
+    #endregion
 }

@@ -18,6 +18,9 @@ public class Player : MonoBehaviour
     PlayerLives lives;
     bool isActive;
 
+
+    #region Methods
+
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -66,12 +69,16 @@ public class Player : MonoBehaviour
         isActive = value;
     }
 
-    IEnumerator SetActiveOnEndOfFrame(bool value)
+    IEnumerator SetActiveLate(bool value)
     {
         yield return new WaitForEndOfFrame();
 
         SetActive(value);
     }
+    #endregion
+
+    #region Event reaction
+
     void OnGameStateChanged(Game.State state)
     {
         switch (state)
@@ -81,7 +88,7 @@ public class Player : MonoBehaviour
                 SetActive(false);
                 break;
             case Game.State.Progress:
-                StartCoroutine(SetActiveOnEndOfFrame(true));   // This is to prevent shooting when starting the game from previous state.
+                StartCoroutine(SetActiveLate(true));   // This is to prevent shooting when starting the game from previous state.
                 break;
             case Game.State.GameOver:
                 SetActive(false);
@@ -89,4 +96,5 @@ public class Player : MonoBehaviour
                 break;
         }
     }
+    #endregion
 }

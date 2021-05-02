@@ -14,6 +14,9 @@ public static class Persistence
     public static ResultData BestResult { get { return bestResult; } }
     public static string FullPath { get { return Application.persistentDataPath + "/" + FILENAME; } }
 
+
+    #region Methods
+
     public static void LoadFromFile()
     {
         if (File.Exists(FullPath))
@@ -37,7 +40,7 @@ public static class Persistence
             return;
         }
 
-        if (bestResult == null) bestResult = new ResultData(0, 0, 0);       // If there is no data loaded to memory - create a new one.
+        if (bestResult == null) bestResult = new ResultData(0, 0, 0);
         FileStream file = File.Create(FullPath);
         BinaryFormatter bf = new BinaryFormatter();
         bf.Serialize(file, bestResult);
@@ -46,7 +49,6 @@ public static class Persistence
 
     static void CreateNewFile()
     {
-        Debug.Log("CreateNewData()");
         if (File.Exists(FullPath))  File.Delete(FullPath);
         bestResult = new ResultData(0, 0, 0);
         
@@ -58,4 +60,5 @@ public static class Persistence
         bestResult = newResult;
         SaveToFile();
     }
+    #endregion
 }

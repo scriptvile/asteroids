@@ -9,6 +9,9 @@ public class FloatingText : MonoBehaviour, IPoolable
     // Inspector
     [SerializeField] TMP_Text t_text;
 
+
+    #region Methods
+
     void Start()
     {
         transform.localScale = Vector3.one;
@@ -39,4 +42,5 @@ public class FloatingText : MonoBehaviour, IPoolable
                 break;
         }
     }
+    #endregion
 }

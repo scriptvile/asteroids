@@ -1,4 +1,5 @@
 using UnityEngine;
+
 public abstract class Shoot : MonoBehaviour
 {
     // Inspector
@@ -7,6 +8,9 @@ public abstract class Shoot : MonoBehaviour
 
     // Privates
     protected float timeToNextShoot;
+
+
+    #region Methods
 
     virtual public void HandleUpdate()
     {
@@ -17,4 +21,5 @@ public abstract class Shoot : MonoBehaviour
     {
         timeToNextShoot = shootCooldown;
     }
+    #endregion
 }

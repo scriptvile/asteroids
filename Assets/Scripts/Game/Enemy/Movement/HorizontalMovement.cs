@@ -21,11 +21,15 @@ public class HorizontalMovement : EnemyMovement
     float timeLeftToChangeY;
     bool isMovingUp;
 
+
+    #region Methods
+
     void Awake()
     {
         boundsY = Game.i.PlayArea.BoundsY;
         boundsX = Game.i.PlayArea.BoundsX;
     }
+
     override public void Restart()
     {
         base.Restart();
@@ -47,6 +51,7 @@ public class HorizontalMovement : EnemyMovement
         if (r == 0) horizontalDirection = HorizontalDirection.Right;
         else horizontalDirection = HorizontalDirection.Left;
     }
+
     void RandomizeYDirection()
     {
         int r = Random.Range(0, 2);
@@ -102,4 +107,5 @@ public class HorizontalMovement : EnemyMovement
             default: Debug.LogError("Unexpected MovingDirection."); return;
         }
     }
+    #endregion
 }

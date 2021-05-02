@@ -16,6 +16,9 @@ public class PlayerMovement : WrapObject
     float inputRotationValue;
     float inputAccelerationValue;
 
+
+    #region Methods
+
     private void OnEnable()
     {
         PlayerLives.OnKilled += OnKilled;
@@ -27,6 +30,7 @@ public class PlayerMovement : WrapObject
         PlayerLives.OnKilled -= OnKilled;
         PlayerShoot.OnShoot -= OnShoot;
     }
+
     public void Init(Rigidbody2D rigidbody)
     {
         InitBounds();
@@ -34,6 +38,7 @@ public class PlayerMovement : WrapObject
         engineFire.SetActive(false);
 
     }
+
     public void HandleUpdate()
     {
         inputRotationValue = Input.GetAxisRaw("Horizontal");
@@ -63,6 +68,9 @@ public class PlayerMovement : WrapObject
     {
         WrapCheck();
     }
+    #endregion
+
+    #region Event reaction
 
     void OnKilled()
     {
@@ -73,4 +81,5 @@ public class PlayerMovement : WrapObject
     {
         rb.AddRelativeForce(Vector2.down * pushbackFromShooting, ForceMode2D.Impulse);
     }
+    #endregion
 }

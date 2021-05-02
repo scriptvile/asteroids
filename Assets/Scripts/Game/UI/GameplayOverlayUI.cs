@@ -9,17 +9,22 @@ public class GameplayOverlayUI : MonoBehaviour
     [SerializeField] GameObject pauseOverlay;
     [SerializeField] PlayerHitEffect playerHitEffect;
 
+
+    #region Methods
+
     void Awake()
     {
         playerHitEffect.gameObject.SetActive(true);
         HidePauseOverlay();
     }
+
     void OnEnable()
     {
         Game.OnStateChanged += OnGameStateChanged;
         Game.OnPaused += ShowPauseOverlay;
         Game.OnResumed += HidePauseOverlay;
     }
+
     void OnDisable()
     {
         Game.OnStateChanged -= OnGameStateChanged;
@@ -59,4 +64,5 @@ public class GameplayOverlayUI : MonoBehaviour
     {
         pauseOverlay.SetActive(false);
     }
+    #endregion
 }

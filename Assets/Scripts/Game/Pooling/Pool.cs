@@ -28,6 +28,9 @@ public abstract class Pool<T> : MonoBehaviour where T : Component, IPoolable
     // Properties
     public T Prefab { get { return prefab; } }
 
+
+    #region Methods
+
     void Awake()
     {
         if (i == null) i = this;
@@ -111,7 +114,6 @@ public abstract class Pool<T> : MonoBehaviour where T : Component, IPoolable
         return objs;
     }
 
-
     public HashSet<T> Request(int count, Queue<Vector2> positions)
     {
         HashSet<T> objs = new HashSet<T>();
@@ -131,14 +133,6 @@ public abstract class Pool<T> : MonoBehaviour where T : Component, IPoolable
         inactive.Enqueue(obj);
     }
 
-    void OnGameStateChanged(Game.State gameState)
-    {
-        if (returnAllOnGameRestart)
-        {
-            if (gameState == Game.State.Preparation) StartCoroutine(ReturnAllToPoolLate());
-        }
-    }
-
     IEnumerator ReturnAllToPoolLate()
     {
         yield return new WaitForEndOfFrame();
@@ -154,5 +148,16 @@ public abstract class Pool<T> : MonoBehaviour where T : Component, IPoolable
             ReturnToPool(toReturn[i]);
         }
     }
+    #endregion
 
+    #region Event reaction
+
+    void OnGameStateChanged(Game.State gameState)
+    {
+        if (returnAllOnGameRestart)
+        {
+            if (gameState == Game.State.Preparation) StartCoroutine(ReturnAllToPoolLate());
+        }
+    }
+    #endregion
 }

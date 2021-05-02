@@ -2,7 +2,11 @@ using UnityEngine;
 
 public class EnemyHitbox : MonoBehaviour
 {
+    // Privates
     Enemy enemy;
+
+
+    #region Methods
 
     public void Init(Enemy enemy)
     {
@@ -34,4 +38,5 @@ public class EnemyHitbox : MonoBehaviour
             }
         }
     }
+    #endregion
 }

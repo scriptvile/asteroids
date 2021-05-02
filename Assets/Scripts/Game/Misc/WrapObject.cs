@@ -2,8 +2,12 @@ using UnityEngine;
 
 public class WrapObject : MonoBehaviour
 {
+    // Privates
     Bounds boundsX;
     Bounds boundsY;
+
+
+    #region Methods
 
     protected void InitBounds()
     {
@@ -18,4 +22,5 @@ public class WrapObject : MonoBehaviour
         if (transform.position.y > boundsY.max) transform.position = new Vector2(transform.position.x, boundsY.min);
         if (transform.position.y < boundsY.min) transform.position = new Vector2(transform.position.x, boundsY.max);   
     }
+    #endregion
 }

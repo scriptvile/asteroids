@@ -7,6 +7,9 @@ public class ScoreUI : MonoBehaviour
     [SerializeField] TMP_Text t_sessionScore;
     [SerializeField] TMP_Text t_bestScore;
 
+
+    #region Methods
+
     void OnEnable()
     {
         Game.OnScoreChanged += UpdateSessionScore;
@@ -30,4 +33,5 @@ public class ScoreUI : MonoBehaviour
     {
         t_bestScore.text = "" + Persistence.BestResult.Score;
     }
+    #endregion
 }

@@ -7,6 +7,9 @@ public class LivesUI : MonoBehaviour
     // Privates
     Queue<LifeUI> lifeUis = new Queue<LifeUI>();
 
+
+    #region Methods
+
     void OnEnable()
     {
         PlayerLives.OnLivesChanged += UpdateLives;
@@ -41,4 +44,5 @@ public class LivesUI : MonoBehaviour
             }
         }
     }
+    #endregion
 }

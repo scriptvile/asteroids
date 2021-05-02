@@ -22,6 +22,9 @@ public class Projectile : WrapObject, IPoolable
     public bool CanDamagePlayer { get { return canDamagePlayer; } }
     public bool BelongsToEnemy { get { return belongsToEnemy; } }
 
+
+    #region Methods
+
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -50,6 +53,7 @@ public class Projectile : WrapObject, IPoolable
     {
         WrapCheck();
     }
+
     public void CreateForce(Quaternion rotation)
     {
         transform.rotation = rotation;
@@ -84,6 +88,6 @@ public class Projectile : WrapObject, IPoolable
     {
         if (belongsToEnemy) return;
         if (col.CompareTag("Player")) canDamagePlayer = true;
-        
     }
+    #endregion
 }

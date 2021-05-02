@@ -6,6 +6,7 @@ public class EnemyShoot : Shoot
     {
         timeToNextShoot = shootCooldown;
     }
+
     override public void HandleUpdate()
     {
         base.HandleUpdate();

@@ -3,14 +3,18 @@ using System;
 [Serializable]
 public class ResultData
 {
+    // Privates
     int score;
     float time;
     int waveRank;
 
+    // Properties
     public int Score { get { return score; } }
     public float Time { get { return time; } }
     public int WaveRank { get { return waveRank; } }
 
+
+    // Methods
     public ResultData(int score, float time, int waveRank)
     {
         this.score = score;

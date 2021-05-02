@@ -16,11 +16,15 @@ public class PlayerLives : MonoBehaviour
     int currentLives;
     int remainingScoreToLifeUp;
 
+
+    #region Methods
+
     void OnEnable()
     {
         PlayerHitbox.OnPlayerHit += OnPlayerHit;
         Game.OnScoreAdded += OnScoreAdded;
     }
+
     void OnDisable()
     {
         PlayerHitbox.OnPlayerHit -= OnPlayerHit;
@@ -32,6 +36,7 @@ public class PlayerLives : MonoBehaviour
         Set(startingLives);
         remainingScoreToLifeUp = scoreToLifeUp;
     }
+
     void Set(int value)
     {
         if (value < 0) value = 0;
@@ -53,6 +58,9 @@ public class PlayerLives : MonoBehaviour
         Set(currentLives - 1);
         OnLifeLost?.Invoke();
     }
+    #endregion
+
+    #region Event reaction
 
     void OnPlayerHit()
     {
@@ -63,7 +71,6 @@ public class PlayerLives : MonoBehaviour
     {
         remainingScoreToLifeUp -= value;
 
-
         if (remainingScoreToLifeUp <= 0)
         {
             remainingScoreToLifeUp = (scoreToLifeUp + remainingScoreToLifeUp);
@@ -73,4 +80,6 @@ public class PlayerLives : MonoBehaviour
             t.SetText("Life Up!", new Color(0.2f, 1, 0), FloatingText.Size.Normal);
         }
     }
+    #endregion
 }
+

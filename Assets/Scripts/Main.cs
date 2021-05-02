@@ -3,8 +3,11 @@ using UnityEngine.SceneManagement;
 
 public class Main : MonoBehaviour
 {
+    // Singleton
     public static Main i = null;
 
+
+    #region Methods
     void Awake()
     {
         if (i == null)
@@ -31,5 +34,5 @@ public class Main : MonoBehaviour
     {
         Persistence.LoadFromFile();
     }
-
+    #endregion
 }

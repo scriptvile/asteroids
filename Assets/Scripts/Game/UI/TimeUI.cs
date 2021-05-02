@@ -5,9 +5,15 @@ using System;
 
 public class TimeUI : MonoBehaviour
 {
+    // Inspector
     [SerializeField] TMP_Text t_time;
+
+    // Privates
     TimeSpan timeSpan;
     bool isPaused;
+
+
+    #region Methods
 
     void OnEnable()
     {
@@ -18,10 +24,12 @@ public class TimeUI : MonoBehaviour
     {
         Game.OnStateChanged -= OnGameStateChanged;
     }
+
     void Awake()
     {
         Pause();
     }
+
     void Update()
     {
         if (isPaused) return;
@@ -38,16 +46,6 @@ public class TimeUI : MonoBehaviour
         isPaused = false;
     }
 
-    void OnGameStateChanged(Game.State newState)
-    {
-        if (newState == Game.State.Progress) Unpause();
-        else
-        {
-            StartCoroutine(RefreshTimeLate());
-            Pause();
-        }
-    }
-
     void RefreshTime()
     {
         timeSpan = TimeSpan.FromSeconds(Session.PlayTime);
@@ -59,4 +57,17 @@ public class TimeUI : MonoBehaviour
         yield return new WaitForEndOfFrame();
         RefreshTime();
     }
+    #endregion
+
+    #region Event reaction
+    void OnGameStateChanged(Game.State newState)
+    {
+        if (newState == Game.State.Progress) Unpause();
+        else
+        {
+            StartCoroutine(RefreshTimeLate());
+            Pause();
+        }
+    }
+    #endregion
 }

@@ -18,6 +18,9 @@ public class Booster : MonoBehaviour, IPoolable
     // Properties
     public BoostType Type { get { return type; } }
 
+
+    #region Methods
+
     public void Spawn()
     {
         SetRandom();
@@ -66,4 +69,5 @@ public class Booster : MonoBehaviour, IPoolable
             Despawn();
         }
     }
+    #endregion
 }

@@ -5,6 +5,9 @@ public class LifeUI : MonoBehaviour, IPoolable
     // Privates
     RectTransform rt;
 
+
+    #region Methods
+
     void Awake()
     {
         rt = GetComponent<RectTransform>();
@@ -27,4 +30,5 @@ public class LifeUI : MonoBehaviour, IPoolable
         transform.localScale = Vector2.one;
         rt.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y, 0);
     }
+    #endregion
 }

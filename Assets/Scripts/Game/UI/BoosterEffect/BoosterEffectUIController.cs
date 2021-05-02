@@ -7,6 +7,9 @@ public class BoosterEffectUIController : MonoBehaviour
     [SerializeField] List<BoosterEffectElement> boosterEffects = new List<BoosterEffectElement>();
     [SerializeField] GameObject root;
 
+
+    #region Methods
+
     void Awake()
     {
         for (int i = 0; i < boosterEffects.Count; i++)          // Make sure all gameObjects are active.
@@ -14,6 +17,7 @@ public class BoosterEffectUIController : MonoBehaviour
             boosterEffects[i].obj.gameObject.SetActive(true);
         }
     }
+
     public void Display(string id)
     {
         BoosterEffectUI obj = GetObj(id);
@@ -43,4 +47,5 @@ public class BoosterEffectUIController : MonoBehaviour
         Debug.LogError("Incorrect ID.");
         return null;
     }
+    #endregion
 }

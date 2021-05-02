@@ -6,6 +6,9 @@ public class GameOverRecordPanelUI : MonoBehaviour
     [SerializeField] GameObject noRecord;
     [SerializeField] GameObject newRecord;
 
+
+    #region Methods
+
     public void SetPanel(bool recordBeaten)
     {
         if (recordBeaten)
@@ -19,4 +22,5 @@ public class GameOverRecordPanelUI : MonoBehaviour
             newRecord.SetActive(false);
         }
     }
+    #endregion
 }

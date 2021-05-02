@@ -2,7 +2,11 @@ using UnityEngine;
 
 public class PlayerHitEffect : MonoBehaviour
 {
+    // Privates
     Animator animator;
+
+
+    #region Methods
 
     void OnEnable()
     {
@@ -23,4 +27,5 @@ public class PlayerHitEffect : MonoBehaviour
     {
         animator.Play("trigger", 0, 0);
     }
+    #endregion
 }

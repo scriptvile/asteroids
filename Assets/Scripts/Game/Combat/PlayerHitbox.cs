@@ -1,4 +1,3 @@
-
 using System.Collections.Generic;
 using UnityEngine;
 using System;
@@ -18,11 +17,15 @@ public class PlayerHitbox : MonoBehaviour
     Collider2D hitboxCollider;
     HashSet<Collider2D> collisions = new HashSet<Collider2D>();
 
+
+    #region Methods
+
     void Awake()
     {
         hitboxCollider = GetComponent<PolygonCollider2D>();
         if (!shield) Debug.LogError("HitboxShield isn't assigned.");
     }
+
     public void Activate()
     {
         hitboxCollider.enabled = true;
@@ -49,6 +52,6 @@ public class PlayerHitbox : MonoBehaviour
         }
 
         if (wasHit && !shield.IsActive) PlayerHit();
-
     }
+    #endregion
 }

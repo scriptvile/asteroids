@@ -34,6 +34,9 @@ public abstract class Enemy : MonoBehaviour, IPoolable
     public int SpawnCountOnKill { get { return spawnCountOnKill; } }
     public int ScoreValue { get { return scoreValue; } }
 
+
+    #region Methods
+
     virtual protected void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -91,5 +94,5 @@ public abstract class Enemy : MonoBehaviour, IPoolable
     {
         markedForDespawn = true;
     }
-
+    #endregion
 }

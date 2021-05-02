@@ -14,6 +14,9 @@ public class PlayerShoot : Shoot
     float baseShootCooldown;
     bool isBoostActive;
 
+
+    #region Methods
+
     void Awake()
     {
         baseShootCooldown = shootCooldown;
@@ -21,14 +24,14 @@ public class PlayerShoot : Shoot
 
     void OnEnable()
     {
-        Pool_Booster.OnFirerateBoostActivated += FirerateBoosterActivated;
-        Pool_Booster.OnFirerateBoostDeactivated += FirerateBoosterDeactivated;
+        Pool_Booster.OnFirerateBoostActivated += ActivateFireRateBooster;
+        Pool_Booster.OnFirerateBoostDeactivated += DeactivateFireRateBooster;
     }
 
     void OnDisable()
     {
-        Pool_Booster.OnFirerateBoostActivated -= FirerateBoosterActivated;
-        Pool_Booster.OnFirerateBoostDeactivated -= FirerateBoosterDeactivated;
+        Pool_Booster.OnFirerateBoostActivated -= ActivateFireRateBooster;
+        Pool_Booster.OnFirerateBoostDeactivated -= DeactivateFireRateBooster;
     }
 
     override public void HandleUpdate()
@@ -57,15 +60,16 @@ public class PlayerShoot : Shoot
         OnShoot?.Invoke();
     }
 
-    void FirerateBoosterActivated(float boostValue)
+    void ActivateFireRateBooster(float boostValue)
     {
         isBoostActive = true;
         shootCooldown = baseShootCooldown - (boostValue * baseShootCooldown);
     }
 
-    void FirerateBoosterDeactivated()
+    void DeactivateFireRateBooster()
     {
         isBoostActive = false;
         shootCooldown = baseShootCooldown;
     }
+    #endregion
 }

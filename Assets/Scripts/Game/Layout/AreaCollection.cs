@@ -6,7 +6,10 @@ public class AreaCollection : MonoBehaviour
     // Inspector
     [SerializeField] List<BoxCollider2D> boxColliders = new List<BoxCollider2D>();
 
-    public Vector2 GenerateRandomPoint()
+
+    #region Methods
+
+    public Vector2 GetRandomPoint()
     {
         if (boxColliders.Count == 0)
         {
@@ -20,4 +23,5 @@ public class AreaCollection : MonoBehaviour
         float rY = Random.Range(col.bounds.min.y, col.bounds.max.y);
         return new Vector2(rX, rY);
     }
+    #endregion
 }

@@ -33,6 +33,9 @@ public class Game : MonoBehaviour
     public PlayArea PlayArea { get { return playArea; } }
     public Player Player { get { return player; } }
 
+
+    #region Methods
+
     void Awake()
     {
         if (i == null) i = this;
@@ -76,7 +79,7 @@ public class Game : MonoBehaviour
         Queue<Vector2> spawnPositions = new Queue<Vector2>();
         for (int i = 0; i < count; i++)
         {
-            Vector2 pos = new Vector2(Bounds.GetRandomFloat(playArea.BoundsX), Bounds.GetRandomFloat(playArea.BoundsY));
+            Vector2 pos = new Vector2(Bounds.GetRandomPoint(playArea.BoundsX), Bounds.GetRandomPoint(playArea.BoundsY));
             spawnPositions.Enqueue(pos);
         }
 
@@ -88,7 +91,7 @@ public class Game : MonoBehaviour
         Queue<Vector2> spawnPositions = new Queue<Vector2>();
         for (int i = 0; i < count; i++)
         {
-            spawnPositions.Enqueue(playArea.Edges.GenerateRandomPoint());
+            spawnPositions.Enqueue(playArea.Edges.GetRandomPoint());
         }
 
         SpawnEnemiesAtPositions(enemyType, count, spawnPositions);
@@ -143,7 +146,7 @@ public class Game : MonoBehaviour
             case State.Progress:
                 break;
             case State.GameOver:
-                if (Session.Score > Persistence.BestResult.Score) StartCoroutine(SaveBestScore());      // Save at the end of frame, so that gameOver panel can still access the old record.
+                if (Session.Score > Persistence.BestResult.Score) StartCoroutine(SaveBestScoreLate());      // Save at the end of frame, so that gameOver panel can still access the old record.
                 break;
         }
 
@@ -174,6 +177,15 @@ public class Game : MonoBehaviour
         OnScoreAdded?.Invoke(value);
     }
 
+    IEnumerator SaveBestScoreLate()
+    {
+        yield return new WaitForEndOfFrame();
+        Persistence.SaveNewResult(new ResultData(Session.Score, Session.PlayTime, Session.WaveRank));
+    }
+    #endregion
+
+    #region Event reaction
+
     void OnPlayerDestroyed()
     {
         SetState(State.GameOver);
@@ -194,10 +206,5 @@ public class Game : MonoBehaviour
         FloatingText text = Pool<FloatingText>.i.Request(enemy.transform.position);
         text.SetText(scoreStr, new Color(1f, 0.8f, 0), FloatingText.Size.Normal);
     }
-
-    IEnumerator SaveBestScore()
-    {
-        yield return new WaitForEndOfFrame();
-        Persistence.SaveNewResult(new ResultData(Session.Score, Session.PlayTime, Session.WaveRank));
-    }
+    #endregion
 }

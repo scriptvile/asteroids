@@ -6,6 +6,9 @@ public class DirectionalMovement : EnemyMovement
     [Header("Settings")]
     [SerializeField] float speed;
 
+
+    #region Methods
+
     override public void Init(Rigidbody2D rb)
     {
         base.Init(rb);
@@ -29,4 +32,5 @@ public class DirectionalMovement : EnemyMovement
         transform.Rotate(0.0f, 0.0f, Random.Range(0.0f, 360f));
         rb.AddForce(transform.up * speed, ForceMode2D.Impulse);
     }
+    #endregion
 }

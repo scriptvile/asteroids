@@ -18,6 +18,8 @@ public class HitboxShield : MonoBehaviour
     bool hasBlinked;
     float shieldRemainingTime;
     Animator animator;
+
+    // Properties
     public bool IsActive
     {
         get
@@ -27,10 +29,14 @@ public class HitboxShield : MonoBehaviour
         }
     }
 
+
+    #region Methods
+
     void Awake()
     {
         animator = GetComponent<Animator>();
     }
+
     void OnEnable()
     {
         PlayerHitbox.OnPlayerHit += OnPlayerHit;
@@ -90,6 +96,10 @@ public class HitboxShield : MonoBehaviour
         yield return new WaitForEndOfFrame();
         Deactivate();
     }
+    #endregion
+
+    #region Event reaction
+
     void OnPlayerHit()
     {
         Activate(durationOnDamageTake);
@@ -115,4 +125,5 @@ public class HitboxShield : MonoBehaviour
         if (boostType != Booster.BoostType.Shield) return;
         Activate(durationOnBoostPickup);
     }
+    #endregion
 }

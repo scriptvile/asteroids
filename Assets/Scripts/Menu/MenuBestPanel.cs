@@ -9,6 +9,8 @@ public class MenuBestPanel : MonoBehaviour
     [SerializeField] TMP_Text t_time;
     [SerializeField] TMP_Text t_waveNumber;
 
+    #region Methods
+
     public void UpdateBestValues()
     {
         ResultData results = Persistence.BestResult;
@@ -28,4 +30,5 @@ public class MenuBestPanel : MonoBehaviour
             t_waveNumber.text = "n/a";
         }
     }
+    #endregion
 }
