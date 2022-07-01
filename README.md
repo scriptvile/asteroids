@@ -1,9 +1,7 @@
 # asteroids
- Project made specifically for the interview.
- 
-Please note this game is not yet finished.
+The game is not finished!
 
-Work time: 35 hours, 35 minutes.
+Work time: 35 hours, 35 minutes (art/design/programming/testing)
 
 Missing features:
  - Sounds
