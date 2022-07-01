@@ -1,8 +1,10 @@
 # asteroids
-The game is not finished!
+
+ViewportHandler.cs - I'm not the author of this class! I hold the credit for all of the other work.
 
 Work time: 35 hours, 35 minutes (art/design/programming/testing)
 
+The game is not finished!
 Missing features:
  - Sounds
  - Music
